@@ -1,6 +1,6 @@
 .page-header
   %h1#timeline
     = @talk.name
-= link_to 'WTF', new_event_talk_rating_path(@event, @talk, :value => -5), :class => 'btn btn-danger btn-block btn-huge'
+= link_to 'WTF', '#', :class => 'btn btn-danger btn-block btn-huge rating'
 %br
-= link_to 'Awesome', new_event_talk_rating_path(@event, @talk, :value => 5), :class => 'btn btn-success btn-block btn-huge'
+= link_to 'Awesome', '#', :class => 'btn btn-success btn-block btn-huge rating'
