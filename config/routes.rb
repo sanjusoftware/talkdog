@@ -7,8 +7,12 @@ Talkdog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'home#index'
+
   resources :events do
     resources :talks do
+      member do
+        get :capture_rating
+      end
       resources :presenters
     end
   end

@@ -1,15 +1,15 @@
 class TalksController < ApplicationController
   before_action :set_event
-  before_action :set_talk, only: [:show, :edit, :update, :destroy]
+  before_action :set_talk, only: [:show, :edit, :update, :destroy, :capture_rating]
 
-  # GET /talks
-  # GET /talks.json
   def index
     @talks = Talk.all
   end
 
-  # GET /talks/1
-  # GET /talks/1.json
+  def capture_rating
+
+  end
+
   def show
   end
 
