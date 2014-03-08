@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
 
   def index
-    @talks = Talk.where('start_at >= ? and end_at <= ?', Time.now, Date.today)
+    @event = Event.first
+    @talks = @event.talks.where('start_at >= ? or end_at >= ?', Time.now, Time.now)
   end
 
 end
