@@ -42,7 +42,9 @@ gem 'simple_form'
 
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
