@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @talk.name %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @talk.event_id %>
+</p>
+
+<p>
+  <strong>Abstract:</strong>
+  <%= @talk.abstract %>
+</p>
+
+<p>
+  <strong>Start at:</strong>
+  <%= @talk.start_at %>
+</p>
+
+<p>
+  <strong>End at:</strong>
+  <%= @talk.end_at %>
+</p>
+
+<p>
+  <strong>Download link:</strong>
+  <%= @talk.download_link %>
+</p>
+
+<p>
+  <strong>Attendance:</strong>
+  <%= @talk.attendance %>
+</p>
+
+<%= link_to 'Edit', edit_talk_path(@talk) %> |
+<%= link_to 'Back', talks_path %>

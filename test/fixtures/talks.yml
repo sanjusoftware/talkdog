@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  event_id: 1
+  abstract: MyText
+  start_at: 2014-03-08 15:57:52
+  end_at: 2014-03-08 15:57:52
+  download_link: MyString
+  attendance: 1
+
+two:
+  name: MyString
+  event_id: 1
+  abstract: MyText
+  start_at: 2014-03-08 15:57:52
+  end_at: 2014-03-08 15:57:52
+  download_link: MyString
+  attendance: 1

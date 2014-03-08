@@ -1,0 +1,39 @@
+<h1>Listing talks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Event</th>
+      <th>Abstract</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>Download link</th>
+      <th>Attendance</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @talks.each do |talk| %>
+      <tr>
+        <td><%= talk.name %></td>
+        <td><%= talk.event_id %></td>
+        <td><%= talk.abstract %></td>
+        <td><%= talk.start_at %></td>
+        <td><%= talk.end_at %></td>
+        <td><%= talk.download_link %></td>
+        <td><%= talk.attendance %></td>
+        <td><%= link_to 'Show', talk %></td>
+        <td><%= link_to 'Edit', edit_talk_path(talk) %></td>
+        <td><%= link_to 'Destroy', talk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Talk', new_event_talk_path(@event) %>
