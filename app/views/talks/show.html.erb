@@ -1,39 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Talk -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @talk.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @talk.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:event) %>:</strong></dt>
+  <dd><%= @talk.event_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:abstract) %>:</strong></dt>
+  <dd><%= @talk.abstract %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:start_at) %>:</strong></dt>
+  <dd><%= @talk.start_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:end_at) %>:</strong></dt>
+  <dd><%= @talk.end_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:download_link) %>:</strong></dt>
+  <dd><%= @talk.download_link %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:attendance) %>:</strong></dt>
+  <dd><%= @talk.attendance %></dd>
+</dl>
 
-<p>
-  <strong>Event:</strong>
-  <%= @talk.event_id %>
-</p>
-
-<p>
-  <strong>Abstract:</strong>
-  <%= @talk.abstract %>
-</p>
-
-<p>
-  <strong>Start at:</strong>
-  <%= @talk.start_at %>
-</p>
-
-<p>
-  <strong>End at:</strong>
-  <%= @talk.end_at %>
-</p>
-
-<p>
-  <strong>Download link:</strong>
-  <%= @talk.download_link %>
-</p>
-
-<p>
-  <strong>Attendance:</strong>
-  <%= @talk.attendance %>
-</p>
-
-<%= link_to 'Edit', edit_talk_path(@talk) %> |
-<%= link_to 'Back', talks_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              event_talks_path(@event), :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_event_talk_path(@event, @talk), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              edit_event_talk_path(@event, @talk),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

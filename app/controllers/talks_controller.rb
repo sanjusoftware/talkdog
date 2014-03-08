@@ -26,10 +26,11 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     @talk = Talk.new(talk_params)
+    @talk.event = @event
 
     respond_to do |format|
       if @talk.save
-        format.html { redirect_to @talk, notice: 'Talk was successfully created.' }
+        format.html { redirect_to event_talks_path(@event), notice: 'Talk was successfully created.' }
         format.json { render action: 'show', status: :created, location: @talk }
       else
         format.html { render action: 'new' }
@@ -57,7 +58,7 @@ class TalksController < ApplicationController
   def destroy
     @talk.destroy
     respond_to do |format|
-      format.html { redirect_to talks_url }
+      format.html { redirect_to event_talks_url }
       format.json { head :no_content }
     end
   end

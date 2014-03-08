@@ -1,45 +1,50 @@
-<%= form_for(@talk) do |f| %>
-  <% if @talk.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
-
-      <ul>
-      <% @talk.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for [@event, @talk], :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :event_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :event_id, options_from_collection_for_select(Event.all, :id, :name) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :abstract, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :abstract, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_at, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :end_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_at, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :download_link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :download_link, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :attendance, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :attendance, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :event_id %><br>
-    <%= f.number_field :event_id %>
-  </div>
-  <div class="field">
-    <%= f.label :abstract %><br>
-    <%= f.text_area :abstract %>
-  </div>
-  <div class="field">
-    <%= f.label :start_at %><br>
-    <%= f.datetime_select :start_at %>
-  </div>
-  <div class="field">
-    <%= f.label :end_at %><br>
-    <%= f.datetime_select :end_at %>
-  </div>
-  <div class="field">
-    <%= f.label :download_link %><br>
-    <%= f.text_field :download_link %>
-  </div>
-  <div class="field">
-    <%= f.label :attendance %><br>
-    <%= f.number_field :attendance %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                event_talks_path(@event), :class => 'btn' %>
   </div>
 <% end %>
