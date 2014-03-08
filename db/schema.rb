@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20140308112830) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
   end
 
   create_table "talks", force: true do |t|

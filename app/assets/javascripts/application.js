@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-datetimepicker.min
 //= require_tree .
 
 $(document).ready(function () {
