@@ -15,3 +15,22 @@
 //= require turbolinks
 //= require_tree .
 
+
+$(document).ready(function () {
+    alert("bla nbla");
+
+    $(".rating").on("click", function () {
+        var url = $(this).attr('href');
+        alert(url);
+//        var program_id = $("#student_program_id").find("option:selected").val();
+//        $.post(url, { registration_pin: 'registration_pin', program_id: 'program_id' }, function (valid_pin) {
+//            if (valid_pin == "true") {
+//                $("#application_form").show();
+//                $("#registration_pin_section").hide();
+//            } else {
+//                $("#application_form").hide();
+//            }
+//        });
+        return false;
+    });
+});
