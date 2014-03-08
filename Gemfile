@@ -40,6 +40,10 @@ gem 'rails_admin'
 gem 'devise'
 gem 'simple_form'
 
+group :production do
+  gem 'pg'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
