@@ -7,7 +7,6 @@ class TalksController < ApplicationController
   end
 
   def capture_rating
-
   end
 
   def show
@@ -75,6 +74,6 @@ class TalksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def talk_params
-      params.require(:talk).permit(:name, :event_id, :abstract, :start_at, :end_at, :download_link, :attendance)
+      params.require(:talk).permit(:name, :event_id, :abstract, :start_at, :end_at, :download_link, :attendance, :rating)
     end
 end

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Value:
+  = @rating.value
+%p
+  %b Time:
+  = @rating.time
+%p
+  %b Talk:
+  = @rating.talk_id
+
+= link_to 'Edit', edit_rating_path(@rating)
+\|
+= link_to 'Back', ratings_path

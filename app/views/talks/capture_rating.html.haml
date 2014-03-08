@@ -1,6 +1,6 @@
 .page-header
   %h1#timeline
     = @talk.name
-%a.btn.btn-danger.btn-block.btn-huge{:href => "#"} WTF!
+= link_to 'WTF', new_event_talk_rating_path(@event, @talk, :value => -5), :class => 'btn btn-danger btn-block btn-huge'
 %br
-%a.btn.btn-success.btn-block.btn-huge{:href => "#"} Awesome
+= link_to 'Awesome', new_event_talk_rating_path(@event, @talk, :value => 5), :class => 'btn btn-success btn-block btn-huge'

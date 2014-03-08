@@ -1,0 +1,10 @@
+= simple_form_for(@rating) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :value
+    = f.input :time
+    = f.input :talk_id
+
+  .form-actions
+    = f.button :submit

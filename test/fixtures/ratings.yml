@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 1
+  time: 2014-03-08 22:07:50
+  talk_id: 1
+
+two:
+  value: 1
+  time: 2014-03-08 22:07:50
+  talk_id: 1
