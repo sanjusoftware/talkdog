@@ -12,7 +12,7 @@ Talkdog::Application.routes.draw do
     resources :talks do
       resources :ratings
       member do
-        get :capture_rating_page
+        get :capture_rating
       end
       resources :presenters
     end
