@@ -14,15 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function () {
-    $('.datetime_field').datetimepicker({
-        format: "dd MM yyyy - HH:ii P",
-        autoclose: true,
-        todayBtn: true,
-        startDate: "2013-02-14 10:00",
-        todayHighlight: 1,
-        minuteStep: 10,
-        showMeridian: true
-    });
-});
