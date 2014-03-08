@@ -2,11 +2,18 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
+  config.main_app_name = Proc.new { |controller| [ "TalkDog", "Bark - #{controller.params[:action].try(:titleize)}" ] }
+
   ## == Devise ==
   config.authenticate_with do
      warden.authenticate! scope: :admin_user
   end
   config.current_user_method(&:current_admin_user)
+
+  #config.authenticate_with do
+  #  warden.authenticate! scope: :user
+  #end
+  #config.current_user_method(&:current_user)
 
   ## == Cancan ==
   # config.authorize_with :cancan
