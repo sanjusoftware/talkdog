@@ -1,3 +1,24 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.talks .well {
+  color: black;
+  background-color: #5c2e0e;
+  padding: 60px;
+  border-radius: 6px;
+  cursor: pointer;
+  h1 {
+    font-size: 63px;
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+  }
+  .btn{
+    padding: 14px 24px;
+    font-size: 21px;
+  }
+}

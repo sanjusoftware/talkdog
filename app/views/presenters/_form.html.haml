@@ -1,0 +1,12 @@
+= simple_form_for(@presenter) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :bio
+    = f.input :twitter_handle
+    = f.input :email
+    = f.input :talk_id
+
+  .form-actions
+    = f.button :submit

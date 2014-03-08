@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @presenter.name
+%p
+  %b Bio:
+  = @presenter.bio
+%p
+  %b Twitter handle:
+  = @presenter.twitter_handle
+%p
+  %b Email:
+  = @presenter.email
+%p
+  %b Talk:
+  = @presenter.talk_id
+
+= link_to 'Edit', edit_presenter_path(@presenter)
+\|
+= link_to 'Back', presenters_path

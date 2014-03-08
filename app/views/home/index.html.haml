@@ -1,0 +1,19 @@
+- Talk.all.each do |talk|
+  .talks
+    .well
+      %h1
+        = talk.name
+        %small
+          = talk.event.name
+      %p
+        = talk.abstract
+      %p
+        Presenters:
+        - talk.presenters.each do |presenter|
+          = image_tag(gravatar(presenter.email, 60))
+      %p
+        Starting in #{distance_of_time_in_words(talk.start_at, Time.now)}
+      %p
+        Run time : #{distance_of_time_in_words(talk.start_at, talk.end_at)}
+      %p
+        = link_to 'Enter', event_talk_path(talk.event, talk), :class => 'btn btn-success btn-lg'
