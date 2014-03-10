@@ -5,7 +5,7 @@
         = @event.name
     %ul.timeline
       - @talks.each_with_index do |talk, i|
-        %li{:class => ("timeline-inverted" if (i+1)/2 != 0)}
+        %li{:class => ("timeline-inverted" if (i+1)%2 != 0)}
           .timeline-badge.success
             %i.glyphicon.glyphicon-check
           .timeline-panel
