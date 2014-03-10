@@ -17,20 +17,16 @@
 
 
 $(document).ready(function () {
-    alert("bla nbla");
-
     $(".rating").on("click", function () {
         var url = $(this).attr('href');
-        alert(url);
-//        var program_id = $("#student_program_id").find("option:selected").val();
-//        $.post(url, { registration_pin: 'registration_pin', program_id: 'program_id' }, function (valid_pin) {
-//            if (valid_pin == "true") {
-//                $("#application_form").show();
-//                $("#registration_pin_section").hide();
-//            } else {
-//                $("#application_form").hide();
-//            }
-//        });
+
+        $.post(url, function (response) {
+            if (response == "success") {
+                $("#rating_widget").html("Thank you for your feedback. It will help the speaker to reflect on his talk and adapt in future. You'll be able to rate sections of this talk multiple times during its duration");
+            } else {
+                $("#rating_widget").html("Sorry, we could not register your feedback this time.");
+            }
+        });
         return false;
     });
 });

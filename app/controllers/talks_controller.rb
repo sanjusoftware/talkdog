@@ -1,12 +1,20 @@
 class TalksController < ApplicationController
   before_action :set_event
-  before_action :set_talk, only: [:show, :edit, :update, :destroy, :capture_rating]
+  before_action :set_talk, only: [:show, :edit, :update, :destroy, :rate]
 
   def index
     @talks = Talk.all
   end
 
-  def capture_rating
+  def rate
+    if request.post?
+      @talk.ratings.new(value: params[:rating], time: Time.now)
+      if @talk.save
+        render text: 'success'
+      else
+        render text: 'fail'
+      end
+    end
   end
 
   def show
