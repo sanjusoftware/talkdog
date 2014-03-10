@@ -6,27 +6,28 @@
     %ul.timeline
       - @talks.each_with_index do |talk, i|
         %li{:class => ("timeline-inverted" if (i+1)%2 == 0)}
-          .timeline-badge.success
-            %i.glyphicon.glyphicon-check
+          .timeline-badge{:class => timeline_class(talk)}
+            %i.icon-beer
           .timeline-panel
             .timeline-heading
               %h2.timeline-title
                 = talk.name
+              .timeline-presenter
+                %p
+                  - talk.presenters.each do |presenter|
+                    = image_tag(gravatar(presenter.email, 30))
               %p
-                By:
-                - talk.presenters.each do |presenter|
-                  = image_tag(gravatar(presenter.email, 40))
-              %p
+                %i.icon-time.icon-2x
                 %small.text-muted
                   %i.glyphicon.glyphicon-time
-                  Starting in #{distance_of_time_in_words(talk.start_at, Time.now)}
+                  = Time.now > talk.start_at ? "Started #{distance_of_time_in_words(talk.start_at, Time.now)} ago" : "Starting in #{distance_of_time_in_words(Time.now.utc, talk.start_at)}"
                   |
                   Run time : #{distance_of_time_in_words(talk.start_at, talk.end_at)}
             .timeline-body
               %p
                 = truncate(talk.abstract, length: 200, omission: '... (continued)')
               %p
-                = link_to 'Enter', rate_event_talk_path(talk.event, talk), :class => 'btn btn-success btn-lg'
+                = link_to 'Watch', rate_event_talk_path(talk.event, talk), :class => 'btn btn-success btn-lg'
   - else
     .well
       No events to show
