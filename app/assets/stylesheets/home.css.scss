@@ -6,6 +6,10 @@
   list-style: none;
   padding: 20px 0 20px;
   position: relative;
+
+  .timeline_anchor {
+    color: #333;
+  }
 }
 
 .timeline:before {
@@ -44,7 +48,7 @@
   clear: both;
 }
 
-.timeline > li > .timeline-panel {
+.timeline > li > a .timeline-panel {
   width: 42.5%;
   float: left;
   border: 1px solid #d4d4d4;
@@ -55,7 +59,15 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
 
-.timeline > li > .timeline-panel:before {
+.timeline > li > a .timeline-panel:hover {
+  background: #F3F3F3;
+}
+
+.timeline > li > a .timeline-panel:hover:after {
+  border-left: 14px solid #F3F3F3;
+}
+
+.timeline > li > a .timeline-panel:before {
   position: absolute;
   top: 26px;
   right: -15px;
@@ -67,7 +79,7 @@
   content: " ";
 }
 
-.timeline > li > .timeline-panel:after {
+.timeline > li > a .timeline-panel:after {
   position: absolute;
   top: 27px;
   right: -14px;
@@ -117,18 +129,18 @@
   border-bottom-left-radius: 50%;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel {
+.timeline > li.timeline-inverted > a .timeline-panel {
   float: right;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel:before {
+.timeline > li.timeline-inverted > a .timeline-panel:before {
   border-left-width: 0;
   border-right-width: 15px;
   left: -15px;
   right: auto;
 }
 
-.timeline > li.timeline-inverted > .timeline-panel:after {
+.timeline > li.timeline-inverted > a .timeline-panel:after {
   border-left-width: 0;
   border-right-width: 14px;
   left: -14px;
@@ -174,7 +186,7 @@
     left: 40px;
   }
 
-  ul.timeline > li > .timeline-panel {
+  ul.timeline > li > a .timeline-panel {
     width: calc(100% - 90px);
     width: -moz-calc(100% - 90px);
     width: -webkit-calc(100% - 90px);
@@ -186,18 +198,18 @@
     top: 16px;
   }
 
-  ul.timeline > li > .timeline-panel {
+  ul.timeline > li > a .timeline-panel {
     float: right;
   }
 
-  ul.timeline > li > .timeline-panel:before {
+  ul.timeline > li > a .timeline-panel:before {
     border-left-width: 0;
     border-right-width: 15px;
     left: -15px;
     right: auto;
   }
 
-  ul.timeline > li > .timeline-panel:after {
+  ul.timeline > li > a .timeline-panel:after {
     border-left-width: 0;
     border-right-width: 14px;
     left: -14px;
