@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @event = Event.first
-    @talks = @event.talks.where('start_at >= ? or end_at >= ?', Date.today, Date.today).order('start_at asc') if @event
+    @talks = @event.talks.recent if @event
   end
 
 end
