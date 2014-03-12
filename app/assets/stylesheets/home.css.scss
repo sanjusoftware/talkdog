@@ -63,6 +63,10 @@
   background: #F3F3F3;
 }
 
+.timeline>li.timeline-inverted>a .timeline-panel:hover:after{
+  border-right: 14px solid #f3f3f3;
+}
+
 .timeline > li > a .timeline-panel:hover:after {
   border-left: 14px solid #F3F3F3;
 }
