@@ -9,9 +9,10 @@ class TalksController < ApplicationController
 
   def rate
     if request.post?
-      rating = @talk.ratings.new(value: params[:rating], time: Time.now, user: current_or_guest_user)
-      if @talk.save
-        render json: rating
+      @rating = @talk.ratings.find_or_initialize_by(:interval => get_interval, :user => current_or_guest_user)
+      @rating.value = params[:rating].to_i
+      if @rating.save
+        render json: @rating
       else
         render text: 'fail'
       end
@@ -81,7 +82,13 @@ class TalksController < ApplicationController
       @event = Event.find(params[:event_id])
     end
 
-    def set_talk
+    def get_interval
+      freq = (@talk.end_at - @talk.start_at) / (Talk::SLOT * 60)
+      interval = ((Time.now - @talk.start_at) / (60 * freq)).ceil
+      ((interval > 0) && (interval <= Talk::SLOT)) ? interval : 0
+    end
+
+  def set_talk
       @talk = @event.talks.find(params[:id])
     end
 

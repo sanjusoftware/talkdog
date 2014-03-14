@@ -21,7 +21,7 @@
       .bar{:style => 'width: 16.66%', :id => "rate_#{slot}", :class => rating_to_class[r.value.to_s]}
         = rating_to_message[r.value.to_s]
     - else
-      .bar{:style => 'width: 16.66%', :id => "rate_#{slot}"}
+      .bar.bar-warning{:style => 'width: 16.66%;', :id => "rate_#{slot}"}
 
 .talk-timeline
 
