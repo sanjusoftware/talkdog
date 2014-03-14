@@ -10,7 +10,6 @@ module TalksHelper
 
     time_slots = [talk.start_at]
     Talk::SLOT.times do |i|
-      p "i => #{i}"
       time_slots << talk.start_at + ((i+1) * freq * 60)
     end
     time_slots
