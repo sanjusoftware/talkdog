@@ -4,6 +4,7 @@
 .page-header
   %h1#timeline
     = @talk.name
+#rating_message
 #rating_widget
   .pull-left
     = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
@@ -11,6 +12,13 @@
     = link_to 'WTF', rate_event_talk_path(@event, @talk, :rating => '-5'), :class => 'btn btn-danger btn-block btn-huge rating'
   .clearfix
 %br
-#rating_progress.progress.hide
+#rating_progress.progress
+  .bar{:style => "width: 16.66%", :id => "rate_1"}
+  .bar{:style => "width: 16.66%", :id => "rate_2"}
+  .bar{:style => "width: 16.66%", :id => "rate_3"}
+  .bar{:style => "width: 16.66%", :id => "rate_4"}
+  .bar{:style => "width: 16.66%", :id => "rate_5"}
+  .bar{:style => "width: 16.66%", :id => "rate_6"}
+.talk-timeline
 
 
