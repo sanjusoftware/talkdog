@@ -14,6 +14,9 @@ class TalksController < ApplicationController
       else
         render text: 'fail'
       end
+    elsif request.get?
+      @talk.attendance = @talk.attendance.present? ?  @talk.attendance + 1 : 1
+      @talk.save
     end
   end
 
