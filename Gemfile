@@ -39,6 +39,7 @@ end
 gem 'rails_admin'
 gem 'devise'
 gem 'simple_form'
+gem 'pry-rails'
 
 group :production do
   gem 'pg'
