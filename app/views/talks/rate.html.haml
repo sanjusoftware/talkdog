@@ -23,6 +23,9 @@
     - else
       .bar.bar-warning{:style => 'width: 16.66%;', :id => "rate_#{slot}"}
 
-.talk-timeline
+- talk_slots(@talk).each do |slot|
+  .time_slot
+    %i.icon-time
+    = slot.strftime("%k:%M %p")
 
 

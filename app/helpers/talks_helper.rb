@@ -5,6 +5,17 @@ module TalksHelper
     'warning' if Time.now <= talk.start_at
   end
 
+  def talk_slots(talk)
+    freq = (talk.end_at - talk.start_at) / (Talk::SLOT * 60)
+
+    time_slots = [talk.start_at]
+    Talk::SLOT.times do |i|
+      p "i => #{i}"
+      time_slots << talk.start_at + ((i+1) * freq * 60)
+    end
+    time_slots
+  end
+
   def rating_to_message
     {'5' => 'Mesmerising',
     '4' => 'Awesome',

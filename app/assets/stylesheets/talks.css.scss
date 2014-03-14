@@ -18,6 +18,19 @@
   border-bottom-left-radius: 50%;
 }
 
+.time_slot {
+  float: left;
+  width: 16.66%;
+
+  &:nth-child(11) {
+    width: 8.33%;
+  }
+  &:nth-child(12) {
+    width: 8.33%;
+    text-align: right;
+  }
+}
+
 .progress{
   .mesmerising {
     background: #006e2e; /* Old browsers */
