@@ -11,12 +11,12 @@ class TalksController < ApplicationController
     if request.post?
       rating = @talk.ratings.new(value: params[:rating], time: Time.now, user: current_or_guest_user)
       if @talk.save
-        render as_json: rating
+        render json: rating
       else
         render text: 'fail'
       end
     elsif request.get?
-      @ratings =  @talk.ratings.of_user(current_or_guest_user).to_json
+      @ratings =  @talk.ratings.of_user(current_or_guest_user)
       @talk.attendance = @talk.attendance.present? ?  @talk.attendance + 1 : 1
       @talk.save
     end
