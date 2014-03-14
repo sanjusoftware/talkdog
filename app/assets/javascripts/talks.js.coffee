@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->
+attachRatingHandler = ->
   $(".rating").on "click", ->
     url = $(this).attr("href")
     $.post url, (response) ->
@@ -35,3 +35,6 @@ $(document).ready ->
     false
 
   return
+
+$(document).ready attachRatingHandler
+$(document).on "page:load", attachRatingHandler

@@ -1,3 +1,6 @@
+= javascript_tag do
+  var start_at = new Date(#{@talk.start_at.to_i});
+  var end_at = new Date(#{@talk.end_at.to_i});
 .page-header
   %h1#timeline
     = @talk.name
