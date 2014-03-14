@@ -9,7 +9,7 @@ $(document).ready ->
       if response is "error"
         $("#rating_message").html "<div class='alert alert-danger'><strong>Oh snap!<strong> try submitting again</div>"
       else
-
+        $("#rating_progress").removeClass('hide')
         if response == '5'
           $("#rating_progress").append "<div class='bar bar-success' style='width: 15%'>Mesmerizing</div>"
         else if response == '4'
