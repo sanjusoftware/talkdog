@@ -1,6 +1,6 @@
 = javascript_tag do
-  var start_at = new Date(#{@talk.start_at.to_i});
-  var end_at = new Date(#{@talk.end_at.to_i});
+  var rating_to_message = eval(#{rating_to_message.to_json.html_safe})
+  var rating_to_class = eval(#{rating_to_class.to_json.html_safe})
 .page-header
   %h1#timeline
     = @talk.name

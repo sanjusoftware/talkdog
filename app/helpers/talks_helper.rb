@@ -6,30 +6,30 @@ module TalksHelper
   end
 
   def rating_to_message
-    {'5' => "Mesmerising",
-    '4' => "Mesmerising",
-    '3' => "Mesmerising",
-    '2' => "Mesmerising",
-    '1' => "Mesmerising",
-    '-1' => "Boring",
-    '-2' => "Sad",
+    {'5' => 'Mesmerising',
+    '4' => 'Awesome',
+    '3' => 'Good',
+    '2' => 'OK',
+    '1' => 'Hmmm..',
+    '-1' => 'Boring',
+    '-2' => 'Sad',
     '-3' => "Can't Stand",
-    '-4' => "Crap",
-    '-5' => "WTF"
+    '-4' => 'Crap',
+    '-5' => 'WTF'
     }
   end
 
   def rating_to_class
-    {'5' => 'bar-success',
-    '4' => 'bar-success',
-    '3' => 'bar-success',
-    '2' => 'bar-success',
-    '1' => 'bar-success',
-    '-1' => 'bar-danger',
-    '-2' => 'bar-danger',
-    '-3' => 'bar-danger',
-    '-4' => 'bar-danger',
-    '-5' => 'bar-danger'
+    {'5' => 'mesmerising',
+    '4' => 'awesome',
+    '3' => 'good',
+    '2' => 'ok',
+    '1' => 'hmmm',
+    '-1' => 'boring',
+    '-2' => 'sad',
+    '-3' => 'cant_stand',
+    '-4' => 'crap',
+    '-5' => 'wtf'
     }
   end
 
