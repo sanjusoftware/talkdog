@@ -1,6 +1,7 @@
 class TalksController < ApplicationController
   before_action :set_event
   before_action :set_talk, only: [:show, :edit, :update, :destroy, :rate]
+  #skip_before_filter :verify_authenticity_token, :only => :rate, :method => :post
 
   def index
     @talks = Talk.all
@@ -8,7 +9,7 @@ class TalksController < ApplicationController
 
   def rate
     if request.post?
-      rating = @talk.ratings.new(value: params[:rating], time: Time.now)
+      rating = @talk.ratings.new(value: params[:rating], time: Time.now, user: current_or_guest_user)
       if @talk.save
         render text: rating.value.to_s
       else
@@ -80,6 +81,7 @@ class TalksController < ApplicationController
     end
 
     def set_talk
+
       @talk = @event.talks.find(params[:id])
     end
 

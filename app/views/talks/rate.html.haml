@@ -6,7 +6,7 @@
     = @talk.name
 #rating_widget
   .pull-left
-    = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating box-shadow'
+    = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
   .pull-left
     = link_to 'WTF', rate_event_talk_path(@event, @talk, :rating => '-5'), :class => 'btn btn-danger btn-block btn-huge rating'
   .clearfix
