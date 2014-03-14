@@ -4,28 +4,54 @@
 .page-header
   %h1#timeline
     = @talk.name
+    - if @talk.ended?
+      %small
+        "Oh Crap! Talk has already ended"
+    - elsif @talk.started?
+      %small
+        "On Time!"
+    - else
+      %small
+        "Early! Be patient"
     .pull-right
       - @talk.presenters.each do |presenter|
-        = image_tag(gravatar(presenter.email, 30))
+        = image_tag(gravatar(presenter.email, 80))
     .clearfix
+%br
+%br
+%br
 #rating_widget
   .pull-left
     = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
   .pull-left
     = link_to 'WTF', rate_event_talk_path(@event, @talk, :rating => '-5'), :class => 'btn btn-danger btn-block btn-huge rating'
+  .well.pull-right{:style => "width: 50%"}
+    = @talk.abstract
+    %br
+    %br
+    %p
+      %small
+        = "Start time: #{@talk.start_at.strftime("%I:%M %P")}"
+        %br
+        = "End time: #{@talk.end_at.strftime("%I:%M %P")}"
+
   .clearfix
 %br
-#rating_progress.progress
+%br
+%br
+#rating_progress.progress.progress-striped
   - (1..Talk::SLOT).each do |slot|
     - if r = @ratings.detect{|r| r.interval == slot}
       .bar{:style => 'width: 16.66%', :id => "rate_#{slot}", :class => rating_to_class[r.value.to_s]}
         = rating_to_message[r.value.to_s]
     - else
-      .bar.bar-warning{:style => 'width: 16.66%;', :id => "rate_#{slot}"}
+      .bar.bar-sleep{:style => 'width: 16.66%;', :id => "rate_#{slot}"}
 
-- talk_slots(@talk).each do |slot|
+- talk_slots(@talk).each do |interval|
   .time_slot
+    =interval[:message]
+    %br
     %i.icon-time
-    = slot.strftime("%k:%M %p")
+      =interval[:slot].strftime("%k:%M")
 
 
