@@ -4,6 +4,6 @@ class Talk < ActiveRecord::Base
   has_many :ratings, :dependent => :destroy
 
   validates_presence_of :name, :event, :start_at, :end_at
-  scope :recent, lambda { where('end_at >= ?', Time.now).order('start_at')}
+  scope :recent, -> { where('end_at >= ?', Time.now).order('start_at')}
 
 end

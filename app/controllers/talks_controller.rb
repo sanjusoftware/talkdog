@@ -16,6 +16,7 @@ class TalksController < ApplicationController
         render text: 'fail'
       end
     elsif request.get?
+      @ratings =  @talk.ratings.of_user(current_or_guest_user).to_json
       @talk.attendance = @talk.attendance.present? ?  @talk.attendance + 1 : 1
       @talk.save
     end
@@ -81,7 +82,6 @@ class TalksController < ApplicationController
     end
 
     def set_talk
-
       @talk = @event.talks.find(params[:id])
     end
 
