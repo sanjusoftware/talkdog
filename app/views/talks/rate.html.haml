@@ -16,12 +16,13 @@
   .clearfix
 %br
 #rating_progress.progress
-  .bar{:style => "width: 16.66%", :id => "rate_1"}
-  .bar{:style => "width: 16.66%", :id => "rate_2"}
-  .bar{:style => "width: 16.66%", :id => "rate_3"}
-  .bar{:style => "width: 16.66%", :id => "rate_4"}
-  .bar{:style => "width: 16.66%", :id => "rate_5"}
-  .bar{:style => "width: 16.66%", :id => "rate_6"}
+  - (1..Talk::SLOT).each do |slot|
+    - if r = @ratings.detect{|r| r.interval == slot}
+      .bar{:style => 'width: 16.66%', :id => "rate_#{slot}", :class => rating_to_class[r.value.to_s]}
+        = rating_to_message[r.value.to_s]
+    - else
+      .bar{:style => 'width: 16.66%', :id => "rate_#{slot}"}
+
 .talk-timeline
 
 

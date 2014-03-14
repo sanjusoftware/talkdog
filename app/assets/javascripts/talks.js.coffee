@@ -5,10 +5,10 @@
 attachRatingHandler = ->
   rating_to_message =
     5: "Mesmerising"
-    4: "Mesmerising"
-    3: "Mesmerising"
-    2: "Mesmerising"
-    1: "Mesmerising"
+    4: "Awesome"
+    3: "Good"
+    2: "OK"
+    1: "Hmmm.."
     "-1": "Boring"
     "-2": "Sad"
     "-3": "Can't Stand"
@@ -34,7 +34,8 @@ attachRatingHandler = ->
         $("#rating_message").html "<div class='alert alert-danger'><strong>Oh snap!<strong> try submitting again</div>"
       else
         rating = parseInt(response.value)
-        rate_div_id = Math.abs(rating)
+        interval = parseInt(response.interval)
+        rate_div_id = Math.abs(interval)
         $("#rate_"+rate_div_id).removeClass()
         $("#rate_"+rate_div_id).addClass('bar')
         $("#rate_"+rate_div_id).addClass(rating_to_class[rating])
