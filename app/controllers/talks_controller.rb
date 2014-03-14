@@ -8,9 +8,9 @@ class TalksController < ApplicationController
 
   def rate
     if request.post?
-      @talk.ratings.new(value: params[:rating], time: Time.now)
+      rating = @talk.ratings.new(value: params[:rating], time: Time.now)
       if @talk.save
-        render text: 'success'
+        render text: rating.value.to_s
       else
         render text: 'fail'
       end

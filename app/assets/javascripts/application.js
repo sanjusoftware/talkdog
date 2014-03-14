@@ -22,10 +22,22 @@ $(document).ready(function () {
         var url = $(this).attr('href');
 
         $.post(url, function (response) {
-            if (response == "success") {
-                $("#rating_widget").html("Thank you for your feedback. It will help the speaker to reflect on his talk and adapt in future. You'll be able to rate sections of this talk multiple times during its duration");
-            } else {
-                $("#rating_widget").html("Sorry, we could not register your feedback this time.");
+            if (response == "error") {
+                $("#rating_message").html("<div class='alert alert-danger'><strong>Oh snap!<strong> try submitting again</div>");
+            }
+            else {
+                if(response > 0) {
+                    $("#rating_message").html("<div class='alert alert-success'><strong>Well done!<strong></strong> It's mesmerizing</div>");
+                    $("#rating_progress").append("<div class='bar bar-success' style='width: 15%'>Great</div>");
+                }
+                else if (response < 0) {
+                    $("#rating_progress").append("<div class='bar bar-danger' style='width: 15%'>WTF</div>");
+                    $("#rating_message").html("<div class='alert alert-warning'><strong>Oh Crap!</strong> It's getting bored</div>");
+                }
+                else {
+                    $("#rating_message").html("<div class='alert alert-info'><strong>Poor!</strong> It's not so interesting yet</div>");
+                    $("#rating_progress").append("<div class='bar bar-warning' style='width: 15%'>Neutral</div>");
+                }
             }
         });
         return false;
