@@ -9,15 +9,27 @@ $(document).ready ->
       if response is "error"
         $("#rating_message").html "<div class='alert alert-danger'><strong>Oh snap!<strong> try submitting again</div>"
       else
-        if response > 0
-          $("#rating_message").html "<div class='alert alert-success'><strong>Well done!<strong></strong> It's mesmerizing</div>"
-          $("#rating_progress").append "<div class='bar bar-success' style='width: 15%'>Great</div>"
-        else if response < 0
-          $("#rating_progress").append "<div class='bar bar-danger' style='width: 15%'>WTF</div>"
-          $("#rating_message").html "<div class='alert alert-warning'><strong>Oh Crap!</strong> It's getting bored</div>"
-        else
-          $("#rating_message").html "<div class='alert alert-info'><strong>Poor!</strong> It's not so interesting yet</div>"
-          $("#rating_progress").append "<div class='bar bar-warning' style='width: 15%'>Neutral</div>"
+
+        if response == '5'
+          $("#rating_progress").append "<div class='bar bar-success' style='width: 15%'>Mesmerizing</div>"
+        else if response == '4'
+          $("#rating_progress").append "<div class='bar bar-success' style='width: 15%'>Awesome</div>"
+        else if response == '3'
+          $("#rating_progress").append "<div class='bar bar-success' style='width: 15%'>V Good</div>"
+        else if response == '2'
+          $("#rating_progress").append "<div class='bar bar-success' style='width: 15%'>Good</div>"
+        else if response == '1'
+          $("#rating_progress").append "<div class='bar bar-success' style='width: 15%'>Ok Types</div>"
+        else if response == '-1'
+          $("#rating_progress").append "<div class='bar bar-danger' style='width: 15%'>Oh Crap!</div>"
+        else if response == '-2'
+          $("#rating_progress").append "<div class='bar bar-danger' style='width: 15%'>Oh Crap!</div>"
+        else if response == '-3'
+          $("#rating_progress").append "<div class='bar bar-danger' style='width: 15%'>Oh Crap!</div>"
+        else if response == '-4'
+          $("#rating_progress").append "<div class='bar bar-danger' style='width: 15%'>Oh Crap!</div>"
+        else if response == '-5'
+          $("#rating_progress").append "<div class='bar bar-danger' style='width: 15%'>Oh Crap!</div>"
       return
 
     false

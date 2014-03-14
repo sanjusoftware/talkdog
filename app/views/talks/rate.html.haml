@@ -1,7 +1,6 @@
 .page-header
   %h1#timeline
     = @talk.name
-#rating_message
 #rating_widget
   .pull-left
     = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating box-shadow'
