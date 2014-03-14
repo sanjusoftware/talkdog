@@ -4,7 +4,10 @@
 .page-header
   %h1#timeline
     = @talk.name
-#rating_message
+    .pull-right
+      - @talk.presenters.each do |presenter|
+        = image_tag(gravatar(presenter.email, 30))
+    .clearfix
 #rating_widget
   .pull-left
     = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
