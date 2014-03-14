@@ -21,6 +21,28 @@ RailsAdmin.config do |config|
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
+  config.excluded_models << "Rating"
+
+  config.model 'User' do
+    navigation_icon 'icon-user'
+
+  end
+  config.model 'AdminUser' do
+    navigation_icon 'icon-eye-open'
+  end
+
+  config.model 'Event' do
+    navigation_icon 'icon-bullhorn'
+  end
+
+  config.model 'Talk' do
+    navigation_icon 'icon-film'
+  end
+
+  config.model 'Presenter' do
+    navigation_icon 'icon-comment'
+  end
+
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   config.actions do
