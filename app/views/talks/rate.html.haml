@@ -30,8 +30,9 @@
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "OK Let's Bark"
   .pull-right
     - @talk.presenters.each do |presenter|
-      %center
-        = link_to image_tag(gravatar(presenter.email, 50), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
+      .span3
+        %center
+          = link_to image_tag(gravatar(presenter.email, 80), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
       / Modal
       .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => "myModal#{presenter.id}"}
         .modal-dialog
