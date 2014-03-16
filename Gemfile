@@ -49,6 +49,21 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :test do
+  gem 'rake'
+  gem 'rspec-rails'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'pry'
+
+  # Adds debugging steps to Pry
+  # continue, step, next
+  gem 'pry-debugger'
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
