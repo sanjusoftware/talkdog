@@ -3,7 +3,7 @@
   var rating_to_class = eval(#{rating_to_class.to_json.html_safe})
 .page-header
   %h2#talk_name
-    = @talk.name
+    = link_to @talk.name, '#aboutModal', "data-toggle" => "modal", 'data-target' => '#talk_details'
     %small
       - if @talk.ended?
         "Oh Crap! The gang is gone."
@@ -11,11 +11,27 @@
         "Time to Bark!"
       - elsif @talk.yet_to_start?
         "Too eager for a dog fight? Be a little patient :)"
+  #talk_details.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+          %h4#myModalLabel.modal-title
+            = "#{@talk.name}"
+        .modal-body
+          %center
+            %p.text-left
+              %strong
+              %br
+                = @talk.abstract
+            %br
+        .modal-footer
+          %center
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "OK Let's Bark"
   .pull-right
     - @talk.presenters.each do |presenter|
-      .span3
-        %center
-          = link_to image_tag(gravatar(presenter.email, 100), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
+      %center
+        = link_to image_tag(gravatar(presenter.email, 50), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
       / Modal
       .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => "myModal#{presenter.id}"}
         .modal-dialog
@@ -26,7 +42,7 @@
                 = "More About #{presenter.name}"
             .modal-body
               %center
-                = image_tag(gravatar(presenter.email, 150), :class => 'img-circle')
+                = image_tag(gravatar(presenter.email, 100), :class => 'img-circle')
                 %h3.media-heading
                   = presenter.name
                   %small
@@ -45,15 +61,6 @@
               %center
                 %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "I've heard enough about #{presenter.name}"
   .clearfix
-#accordion.panel-group
-  .panel.panel-default
-    .panel-heading
-      %h4.panel-title
-        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
-          What is it about?
-    #collapseOne.panel-collapse.collapse.in
-      .panel-body
-        .well= @talk.abstract
 
 - if @talk.started?
   #rating_widget

@@ -1,32 +1,31 @@
-.container
-  - if @event
-    .page-header
-      %h1#timeline
-        = @event.name
-    %ul.timeline
-      - @talks.each_with_index do |talk, i|
-        %li{:class => ("timeline-inverted" if (i+1)%2 == 0)}
-          .timeline-badge{:class => timeline_class(talk)}
-            %i.icon-beer
-          = link_to rate_event_talk_path(talk.event, talk), :class => 'timeline_anchor' do
-            .timeline-panel
-              .timeline-heading
-                %h2.timeline-title
-                  = talk.name
-                .timeline-presenter
-                  %p
-                    - talk.presenters.each do |presenter|
-                      = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
+- if @event
+  .page-header
+    %h1#timeline
+      = @event.name
+  %ul.timeline
+    - @talks.each_with_index do |talk, i|
+      %li{:class => ("timeline-inverted" if (i+1)%2 == 0)}
+        .timeline-badge{:class => timeline_class(talk)}
+          %i.icon-beer
+        = link_to rate_event_talk_path(talk.event, talk), :class => 'timeline_anchor' do
+          .timeline-panel
+            .timeline-heading
+              %h2.timeline-title
+                = talk.name
+              .timeline-presenter
                 %p
-                  %i.icon-time.icon-2x
-                  %small.text-muted
-                    %i.glyphicon.glyphicon-time
-                    = Time.now > talk.start_at ? "Started #{distance_of_time_in_words(talk.start_at, Time.now)} ago" : "Starting in #{distance_of_time_in_words(Time.now.utc, talk.start_at)}"
-                    |
-                    Run time : #{distance_of_time_in_words(talk.start_at, talk.end_at)}
-              .timeline-body
-                %p
-                  = truncate(talk.abstract, length: 200, omission: '... (continued)')
-  - else
-    .well
-      No events to show
+                  - talk.presenters.each do |presenter|
+                    = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
+              %p
+                %i.icon-time.icon-2x
+                %small.text-muted
+                  %i.glyphicon.glyphicon-time
+                  = Time.now > talk.start_at ? "Started #{distance_of_time_in_words(talk.start_at, Time.now)} ago" : "Starting in #{distance_of_time_in_words(Time.now.utc, talk.start_at)}"
+                  |
+                  Run time : #{distance_of_time_in_words(talk.start_at, talk.end_at)}
+            .timeline-body
+              %p
+                = truncate(talk.abstract, length: 200, omission: '... (continued)')
+- else
+  .well
+    No events to show
