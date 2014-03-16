@@ -17,6 +17,7 @@
                   - talk.presenters.each do |presenter|
                     = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
               %p
+                .count_down_timer{'data-date'=>"#{talk.end_at}"}
                 %i.icon-time.icon-2x
                 %small.text-muted
                   %i.glyphicon.glyphicon-time
@@ -25,7 +26,7 @@
                   Run time : #{distance_of_time_in_words(talk.start_at, talk.end_at)}
             .timeline-body
               %p
-                = truncate(talk.abstract, length: 200, omission: '... (continued)')
+                = truncate(talk.abstract, length: 200, omission: '... (get in to explore more)')
 - else
   .well
     No events to show
