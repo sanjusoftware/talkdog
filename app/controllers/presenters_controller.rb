@@ -69,6 +69,6 @@ class PresentersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def presenter_params
-      params.require(:presenter).permit(:name, :bio, :twitter_handle, :email, :talk_id)
+      params.require(:presenter).permit(:name, :bio, :twitter_handle, :email, :company, :position, :talk_id)
     end
 end

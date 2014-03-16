@@ -1,7 +1,4 @@
-%h1 Editing presenter
-
-= render 'form'
-
-= link_to 'Show', @presenter
-\|
-= link_to 'Back', presenters_path
+- model_class = Presenter
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"

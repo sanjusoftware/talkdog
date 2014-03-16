@@ -8,6 +8,7 @@ Talkdog::Application.routes.draw do
 
   root 'home#index'
 
+  resources :presenters
   resources :events do
     resources :talks do
       resources :ratings
