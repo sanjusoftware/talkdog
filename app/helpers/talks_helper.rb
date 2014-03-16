@@ -1,8 +1,12 @@
 module TalksHelper
   def timeline_class(talk)
-    return 'success' if Time.now.between?(talk.start_at, talk.end_at)
-    return 'danger' if Time.now >= talk.end_at
-    'warning' if Time.now <= talk.start_at
+    return 'success' if talk.started?
+    return 'danger' if talk.ended?
+    'warning' if talk.yet_to_start?
+  end
+
+  def ist(time)
+    time.in_time_zone(TZInfo::Timezone.get('Asia/Kolkata'))
   end
 
   def talk_slots(talk)

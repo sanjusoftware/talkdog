@@ -4,48 +4,49 @@
 .page-header
   %h2#talk_name
     = @talk.name
-    - if @talk.ended?
-      %small
-        "Oh Crap! Talk has already ended"
-    - elsif @talk.started?
-      %small
-        "On Time!"
-    - else
-      %small
-        "Early! Be patient"
+    %small
+      - if @talk.ended?
+        "Oh Crap! The gang is gone."
+      - elsif @talk.started?
+        "Time to Bark!"
+      - elsif @talk.yet_to_start?
+        "Too eager for a dog fight? Be a little patient :)"
   .pull-right
     - @talk.presenters.each do |presenter|
       = image_tag(gravatar(presenter.email, 70), :class => 'img-circle')
   .clearfix
-#rating_widget
-  #accordion.panel-group
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
-            What is it about?
-      #collapseOne.panel-collapse.collapse.in
-        .panel-body
-          .well= @talk.abstract
-  .pull-left
-    = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
-  .pull-left
-    = link_to 'WTF', rate_event_talk_path(@event, @talk, :rating => '-5'), :class => 'btn btn-danger btn-block btn-huge rating'
-  .clearfix
-%br
-#rating_progress.progress.progress-striped
-  - (1..Talk::SLOT).each do |slot|
-    - if r = @ratings.detect{|r| r.interval == slot}
-      .bar{:style => 'width: 16.66%', :id => "rate_#{slot}", :class => rating_to_class[r.value.to_s]}
-        = rating_to_message[r.value.to_s]
-    - else
-      .bar.bar-sleep{:style => 'width: 16.66%;', :id => "rate_#{slot}"}
+#accordion.panel-group
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+          What is it about?
+    #collapseOne.panel-collapse.collapse.in
+      .panel-body
+        .well= @talk.abstract
 
-- talk_slots(@talk).each do |interval|
-  .time_slot
-    =interval[:message]
-    %br
-    %i.icon-time
-      =interval[:slot].strftime("%k:%M")
+- if @talk.started?
+  #rating_widget
+    .pull-left
+      = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
+    .pull-left
+      = link_to 'WTF', rate_event_talk_path(@event, @talk, :rating => '-5'), :class => 'btn btn-danger btn-block btn-huge rating'
+    .clearfix
+  %br
+  #rating_progress.progress.progress-striped
+    - (1..Talk::SLOT).each do |slot|
+      - if r = @ratings.detect{|r| r.interval == slot}
+        .bar{:style => 'width: 16.66%', :id => "rate_#{slot}", :class => rating_to_class[r.value.to_s]}
+          = rating_to_message[r.value.to_s]
+      - else
+        .bar.bar-sleep{:style => 'width: 16.66%;', :id => "rate_#{slot}"}
 
+  - talk_slots(@talk).each do |interval|
+    .time_slot
+      =interval[:message]
+      %br
+      %i.icon-time
+        =interval[:slot].strftime("%k:%M")
+- else
+  .well You can only bark when the fight is on. Whats the fun otherwise :)
 
