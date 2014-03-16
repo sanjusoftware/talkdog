@@ -2,7 +2,7 @@
   var rating_to_message = eval(#{rating_to_message.to_json.html_safe})
   var rating_to_class = eval(#{rating_to_class.to_json.html_safe})
 .page-header
-  %h1#timeline
+  %h2#talk_name
     = @talk.name
     - if @talk.ended?
       %small
@@ -13,31 +13,25 @@
     - else
       %small
         "Early! Be patient"
-    .pull-right
-      - @talk.presenters.each do |presenter|
-        = image_tag(gravatar(presenter.email, 80))
-    .clearfix
-%br
-%br
-%br
+  .pull-right
+    - @talk.presenters.each do |presenter|
+      = image_tag(gravatar(presenter.email, 70), :class => 'img-circle')
+  .clearfix
 #rating_widget
+  #accordion.panel-group
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title
+          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+            What is it about?
+      #collapseOne.panel-collapse.collapse.in
+        .panel-body
+          .well= @talk.abstract
   .pull-left
     = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
   .pull-left
     = link_to 'WTF', rate_event_talk_path(@event, @talk, :rating => '-5'), :class => 'btn btn-danger btn-block btn-huge rating'
-  .well.pull-right{:style => "width: 50%"}
-    = @talk.abstract
-    %br
-    %br
-    %p
-      %small
-        = "Start time: #{@talk.start_at.strftime("%I:%M %P")}"
-        %br
-        = "End time: #{@talk.end_at.strftime("%I:%M %P")}"
-
   .clearfix
-%br
-%br
 %br
 #rating_progress.progress.progress-striped
   - (1..Talk::SLOT).each do |slot|

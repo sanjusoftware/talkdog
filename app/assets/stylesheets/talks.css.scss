@@ -1,6 +1,12 @@
 // Place all the styles related to the Talks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#talk_name{
+  float: left;
+}
+.page-header {
+  margin: 0px 0 0px;
+}
 .btn-huge{
   padding: 20px;
   color: #fff;

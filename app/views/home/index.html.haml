@@ -16,7 +16,7 @@
                 .timeline-presenter
                   %p
                     - talk.presenters.each do |presenter|
-                      = image_tag(gravatar(presenter.email, 30))
+                      = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
                 %p
                   %i.icon-time.icon-2x
                   %small.text-muted
