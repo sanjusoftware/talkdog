@@ -4,13 +4,15 @@
 .page-header
   %h2#talk_name
     = link_to @talk.name, '#aboutModal', "data-toggle" => "modal", 'data-target' => '#talk_details'
+    %br
     %small
       - if @talk.ended?
         "Oh Crap! The gang is gone."
       - elsif @talk.started?
         "Time to Bark!"
       - elsif @talk.yet_to_start?
-        "Too eager for a dog fight? Be a little patient :)"
+        Too eager for a dog fight? Be a little patient
+        %i.icon-smile
   #talk_details.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
     .modal-dialog
       .modal-content
@@ -27,7 +29,9 @@
             %br
         .modal-footer
           %center
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "OK Let's Bark"
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+              OK! let's bark now
+              %i.icon-smile
   .pull-right
     - @talk.presenters.each do |presenter|
       .span3
@@ -86,5 +90,8 @@
       %i.icon-time
         =interval[:slot].strftime("%k:%M")
 - else
-  .well You can only bark when the fight is on. Whats the fun otherwise :)
+  .well
+    You can only bark when the fight is on. Whats the fun otherwise
+    %i.icon-smile
+
 
