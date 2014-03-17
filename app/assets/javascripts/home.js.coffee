@@ -3,41 +3,31 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 attachTimeHandler = ->
-  $("#DateCountdown").TimeCircles()
-  $(".count_down_timer").TimeCircles time:
-    Days:
-      show: false
+  $(".count_down_timer").TimeCircles
+    animation: "ticks"
+    bg_width: 0.2
+    fg_width: 0.03
+    circle_bg_color: "#90989F"
+    time:
+      Days:
+#        text: "Days"
+#        color: "#40484F"
+        show: false
 
-    Hours:
-      show: false
+      Hours:
+        text: "Hours"
+        color: "#40484F"
+        show: true
 
-  $("#PageOpenTimer").TimeCircles()
-  updateTime = ->
-    date = $("#date").val()
-    time = $("#time").val()
-    datetime = date + " " + time + ":00"
-    $("#DateCountdown").data("date", datetime).TimeCircles().start()
-    return
+      Minutes:
+        text: "Minutes"
+        color: "#40484F"
+        show: true
 
-  # Start and stop are methods applied on the public TimeCircles instance
-  $(".startTimer").click ->
-    $("#CountDownTimer").TimeCircles().start()
-    return
-
-  $(".stopTimer").click ->
-    $("#CountDownTimer").TimeCircles().stop()
-    return
-
-  # Fade in and fade out are examples of how chaining can be done with TimeCircles
-  $(".fadeIn").click ->
-    $("#PageOpenTimer").fadeIn()
-    return
-
-  $(".fadeOut").click ->
-    $("#PageOpenTimer").fadeOut()
-    return
-
-  return
+      Seconds:
+        text: "Seconds"
+        color: "#40484F"
+        show: true
 
 $(document).ready attachTimeHandler
 $(document).on "page:load", attachTimeHandler

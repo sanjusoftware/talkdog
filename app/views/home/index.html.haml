@@ -13,17 +13,15 @@
               %h2.timeline-title
                 = talk.name
               .timeline-presenter
-                %p
-                  - talk.presenters.each do |presenter|
-                    = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
-              %p
-                .count_down_timer{'data-date'=>"#{talk.end_at}"}
-                %i.icon-time.icon-2x
-                %small.text-muted
-                  %i.glyphicon.glyphicon-time
-                  = Time.now > talk.start_at ? "Started #{distance_of_time_in_words(talk.start_at, Time.now)} ago" : "Starting in #{distance_of_time_in_words(Time.now.utc, talk.start_at)}"
-                  |
-                  Run time : #{distance_of_time_in_words(talk.start_at, talk.end_at)}
+                - talk.presenters.each do |presenter|
+                  = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
+              - if talk.yet_to_start?
+                Starting in
+                .count_down_timer{"data-date" => "#{talk.start_at.strftime("%Y-%m-%d %H:%M:%S")}"}
+              - elsif talk.started?
+                Remaining showtime
+                .count_down_timer{"data-date" => "#{talk.end_at.strftime("%Y-%m-%d %H:%M:%S")}"}
+            %br
             .timeline-body
               %p
                 = truncate(talk.abstract, length: 200, omission: '... (get in to explore more)')

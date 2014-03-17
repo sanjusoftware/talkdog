@@ -1,3 +1,7 @@
+.count_down_timer{
+    /*width: 50%;*/
+    /*height: 50%;*/
+}
 /**
  *	This element is created inside your target element
  *	It is used so that your own element will not need to be altered
@@ -21,11 +25,11 @@
  *	Titles (Days, Hours, etc)
  **/
 .time_circles > div > h4 {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Century Gothic', Arial;
+    font-family: 'Century Gothic', Arial, sans-serif;
 }
 
 /**
@@ -35,7 +39,7 @@
     display: block;
     width: 100%;
     text-align: center;
-    font-family: 'Century Gothic', Arial;
+    font-family: 'Century Gothic', Arial, sans-serif;
     font-size: 300%;
     margin-top: 0.4em;
     font-weight: bold;
