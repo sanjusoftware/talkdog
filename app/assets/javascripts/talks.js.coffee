@@ -29,7 +29,7 @@ attachRatingHandler = ->
     unless window.app.voted
       console.log "updating"
       rating = $(".rating_slider").slider("getValue")
-      $("#monitor").removeClass().addClass rating_to_class[rating]
+      $(".slider-handle").removeClass(rating_classes.join(' ')).addClass(rating_to_class[rating])
       window.clearTimeout window.app.id
     return
 

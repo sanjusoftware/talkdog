@@ -56,8 +56,8 @@
   bottom: 0;
 }
 .slider.slider-vertical .slider-handle {
-  margin-left: -5px;
-  margin-top: -10px;
+  margin-left: -45px;
+  margin-top: -50px;
 }
 .slider.slider-vertical .slider-handle.triangle {
   border-width: 10px 0 10px 10px;
@@ -119,8 +119,8 @@
 }
 .slider-handle {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 100px;
+  height: 100px;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#149bdf), to(#0480be));
   background-image: -webkit-linear-gradient(top, #149bdf, 0%, #0480be, 100%);
   background-image: -moz-linear-gradient(top, #149bdf 0%, #0480be 100%);

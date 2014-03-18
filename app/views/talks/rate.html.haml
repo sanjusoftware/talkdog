@@ -1,6 +1,7 @@
 = javascript_tag do
   var rating_to_message = eval(#{rating_to_message.to_json.html_safe})
   var rating_to_class = eval(#{rating_to_class.to_json.html_safe})
+  var rating_classes = eval(#{rating_to_class.values.to_json.html_safe})
 .page-header
   %h2#talk_name
     = link_to @talk.name, '#aboutModal', "data-toggle" => "modal", 'data-target' => '#talk_details'
@@ -71,10 +72,8 @@
   #rating_widget
     = link_to '#', rate_event_talk_path(@event, @talk), :class => 'hide', :id => 'url'
     %input.rating_slider{:type => 'text', :value => ''}
-      #monitor
       .request.alert.alert-success Thank you for voting!
       .instruction.alert Drag the slider and release to vote.
-
     .clearfix
   %br
   #rating_progress.progress.progress-striped
