@@ -3,7 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 attachRatingHandler = ->
-  $(".rating_slider").slider(reversed: true).on("slide", ->
+  $(".rating_slider").slider(
+    reversed: true
+    min: -5
+    max: 5
+    step: 1
+    orientation: "vertical"
+    selection: "after"
+    tooltip: "show"
+  ).on("slide", ->
     updateRating()
     return
   ).on "slideStop", ->
@@ -11,8 +19,7 @@ attachRatingHandler = ->
     return
 
   initialSetting = ->
-    $(".rating_slider").slider "setValue", 1
-    $(".val").text 1
+    $(".rating_slider").slider "setValue", 0
     window.app = {}
     window.app.voted = false
     return
@@ -21,8 +28,8 @@ attachRatingHandler = ->
   updateRating = ->
     unless window.app.voted
       console.log "updating"
-      rawRating = $(".rating_slider").slider("getValue")
-      $(".val").text rawRating
+      rating = $(".rating_slider").slider("getValue")
+      $("#monitor").removeClass().addClass rating_to_class[rating]
       window.clearTimeout window.app.id
     return
 
@@ -31,18 +38,19 @@ attachRatingHandler = ->
       console.log "starting final update"
       $(".instruction").hide()
       $(".request").show()
-      $(".slider").addClass "slider-disabled"
-      rating = $(".val").text()
-      $.post "/events/1/talks/6/rate?rating=" + rating, ((response) ->
-        if response is "error"
-          $("#rating_message").html "<div class='alert alert-danger'><strong>Oh snap!<strong> try submitting again</div>"
-        else
-          rating = response.value
-          rate_div_id = parseInt(response.interval)
-          $("#rate_" + rate_div_id).removeClass().addClass("bar").addClass(rating_to_class[rating]).html rating_to_message[rating]
-        false
-      ), "json"
-      window.app.voted = true
+      rating = $(".rating_slider").slider("getValue")
+      rating_url = $("#url").attr("href")
+      $.post rating_url,
+        rating: rating
+      , ((response) ->
+          if response is "error"
+            $("#rating_message").html "<div class='alert alert-danger'><strong>Oh snap!<strong> try submitting again</div>"
+          else
+            rating = response.value
+            rate_div_id = parseInt(response.interval)
+            $("#rate_" + rate_div_id).removeClass().addClass("bar").addClass(rating_to_class[rating]).html rating_to_message[rating]
+          false
+        ), "json"
       return
     , 2000)
     return

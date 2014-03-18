@@ -69,9 +69,9 @@
 
 - if @talk.started?
   #rating_widget
-    %input.rating_slider{"data-slider-max" => "5", "data-slider-min" => "0", "data-slider-orientation" => "vertical", "data-slider-selection" => "after", "data-slider-step" => "1", "data-slider-tooltip" => "hide", :type => "text", :value => ""}
-      .monitor
-        .val 3
+    = link_to '#', rate_event_talk_path(@event, @talk), :class => 'hide', :id => 'url'
+    %input.rating_slider{:type => 'text', :value => ''}
+      #monitor
       .request.alert.alert-success Thank you for voting!
       .instruction.alert Drag the slider and release to vote.
 

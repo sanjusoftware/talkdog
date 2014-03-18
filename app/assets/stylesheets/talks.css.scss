@@ -1,9 +1,10 @@
 // Place all the styles related to the Talks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#talk_name{
+#talk_name {
   float: left;
 }
+
 .page-header {
   margin: 0px 0 0px;
 }
@@ -19,7 +20,7 @@
   box-shadow: 3px 3px 2px 0px rgba(50, 50, 50, 0.75);
 }
 
-.btn-huge{
+.btn-huge {
   padding: 20px;
   color: #fff;
   width: 200px;
@@ -49,45 +50,45 @@
   }
 }
 
-.progress{
+.progress {
   margin-bottom: 5px;
+}
 
-  .mesmerising {
-    background-color: #006e2e; /* Old browsers */
-  }
+.mesmerising {
+  background-color: #006e2e !important; 
+}
 .awesome {
-  background-color: #299a0b; /* Old browsers */
+  background-color: #299a0b !important; 
 }
 .good {
-    background-color: #5eb95e;
-  }
+  background-color: #5eb95e !important;
+}
 
 .ok {
-  background-color: #8fc400; /* Old browsers */
+  background-color: #8fc400 !important; 
 }
 .hmmm {
-  background-color: #b6e026; /* Old browsers */
+  background-color: #b6e026 !important; 
 }
 
 .boring {
-  background-color: #ffaf4b; /* Old browsers */
+  background-color: #ffaf4b !important; 
 }
 
 .sad {
-  background-color: #ff670f; /* Old browsers */
+  background-color: #ff670f !important; 
 }
 
 .cant_stand {
-  background-color: #f2825b; /* Old browsers */
+  background-color: #f2825b !important; 
 }
 
 .crap {
-  background-color: #ff3019; /* Old browsers */
+  background-color: #ff3019 !important; 
 }
 
 .wtf {
-  background-color: #cc0000; /* Old browsers */
-  }
+  background-color: #cc0000 !important; 
 }
 
 .bar-warning {
@@ -98,20 +99,18 @@
   background-color: #d9534f !important;
 }
 
-.bar-sleep{
+.bar-sleep {
   background-color: #fff !important;
 }
 
-/* slider at http://seiyria.github.io/bootstrap-slider/ */
-
-.slider{
+.slider {
   margin-left: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
   float: left;
 }
 
-.monitor{
+#monitor {
   width: 100px;
   height: 100px;
   background: #eee;
@@ -122,21 +121,21 @@
   border-radius: 100px;
 }
 
-.val{
+.val {
   top: 39px;
   left: 27px;
   position: relative;
   font-size: 80px;
 }
 
-.request{
+.request {
   display: none;
   clear: both;
   width: 200px;
   margin-left: 100px;
 }
 
-.instruction{
+.instruction {
   clear: both;
   width: 240px;
   margin-left: 100px;
