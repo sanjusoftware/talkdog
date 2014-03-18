@@ -35,6 +35,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'twitter'
+gem 'oauth'
 
 gem 'rails_admin'
 gem 'devise'

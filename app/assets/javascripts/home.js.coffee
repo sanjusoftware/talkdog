@@ -10,8 +10,8 @@ attachTimeHandler = ->
     circle_bg_color: "#90989F"
     time:
       Days:
-#        text: "Days"
-#        color: "#40484F"
+        text: "Days"
+        color: "#40484F"
         show: false
 
       Hours:

@@ -69,10 +69,12 @@
 
 - if @talk.started?
   #rating_widget
-    .pull-left
-      = link_to 'Awesome', rate_event_talk_path(@event, @talk, :rating => '5'), :class => 'btn btn-success btn-block btn-huge rating'
-    .pull-left
-      = link_to 'WTF', rate_event_talk_path(@event, @talk, :rating => '-5'), :class => 'btn btn-danger btn-block btn-huge rating'
+    %input.rating_slider{"data-slider-max" => "5", "data-slider-min" => "0", "data-slider-orientation" => "vertical", "data-slider-selection" => "after", "data-slider-step" => "1", "data-slider-tooltip" => "hide", :type => "text", :value => ""}
+      .monitor
+        .val 3
+      .request.alert.alert-success Thank you for voting!
+      .instruction.alert Drag the slider and release to vote.
+
     .clearfix
   %br
   #rating_progress.progress.progress-striped
