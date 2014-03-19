@@ -39,12 +39,10 @@
       - else
         .bar.bar-sleep{:style => 'width: 16.66%;', :id => "rate_#{slot}"}
 
-  - talk_slots(@talk).each do |interval|
+  - @talk.time_slots.each do |interval|
     .time_slot
-      =interval[:message]
-      %br
       %i.icon-time
-        =interval[:slot].strftime("%k:%M")
+        =interval.strftime("%k:%M")
       / Modal
   -##talk_details.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   -#  .modal-dialog

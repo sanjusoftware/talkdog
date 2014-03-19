@@ -25,6 +25,9 @@
             .timeline-body
               %p
                 = truncate(talk.abstract, length: 200, omission: '... (get in to explore more)')
+            %br
+            .talk_chart
+              = high_chart("talk_graph_#{talk.id}", talk_graph(talk))
 - else
   .well
     No events to show
