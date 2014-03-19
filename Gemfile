@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
 
+source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.1.0'
 gem 'rails', '4.0.3'
@@ -55,10 +55,7 @@ group :test do
 end
 
 group :development do
-  gem 'guard'
-  gem 'guard-rspec'
   gem 'pry'
-
   # Adds debugging steps to Pry
   # continue, step, next
   gem 'pry-debugger'
