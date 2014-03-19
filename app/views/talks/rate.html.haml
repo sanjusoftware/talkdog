@@ -4,7 +4,8 @@
   var rating_classes = eval(#{rating_to_class.values.to_json.html_safe})
 .page-header
   %h2#talk_name
-    = link_to @talk.name, '#aboutModal', "data-toggle" => "modal", 'data-target' => '#talk_details'
+    = @talk.name
+    -#= link_to @talk.name, '#aboutModal', "data-toggle" => "modal", 'data-target' => '#talk_details'
     %br
     %small
       - if @talk.ended?
@@ -18,7 +19,8 @@
     - @talk.presenters.each do |presenter|
       .span3
         %center
-          = link_to image_tag(gravatar(presenter.email, 80), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
+          = image_tag(gravatar(presenter.email, 80), :class => 'img-circle')
+          -#= link_to image_tag(gravatar(presenter.email, 80), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
   .clearfix
 
 - if @talk.started?
@@ -44,53 +46,53 @@
       %i.icon-time
         =interval[:slot].strftime("%k:%M")
       / Modal
-  #talk_details.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog
-      .modal-content
-        .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
-          %h4#myModalLabel.modal-title
-            = "#{@talk.name}"
-        .modal-body
-          %center
-            %p.text-left
-              %strong
-              %br
-                = @talk.abstract
-            %br
-        .modal-footer
-          %center
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
-              OK! let's bark now
-              %i.icon-smile
-  - @talk.presenters.each do |presenter|
-    .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => "myModal#{presenter.id}"}
-      .modal-dialog
-        .modal-content
-          .modal-header
-            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
-            %h4#myModalLabel.modal-title
-              = "More About #{presenter.name}"
-          .modal-body
-            %center
-              = image_tag(gravatar(presenter.email, 100), :class => 'img-circle')
-              %h3.media-heading
-                = presenter.name
-                %small
-                  %i.icon-twitter= "(#{presenter.twitter_handle})"
-              - if presenter.company.present?
-                %span
-                  %strong= "#{presenter.position} @ #{presenter.company}"
-            %hr
-              %center
-                %p.text-left
-                  %strong Bio:
-                  %br
-                    = presenter.bio
-                %br
-          .modal-footer
-            %center
-              %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "I've heard enough about #{presenter.name}"
+  -##talk_details.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  -#  .modal-dialog
+  -#    .modal-content
+  -#      .modal-header
+  -#        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+  -#        %h4#myModalLabel.modal-title
+  -#          = "#{@talk.name}"
+  -#      .modal-body
+  -#        %center
+  -#          %p.text-left
+  -#            %strong
+  -#            %br
+  -#              = @talk.abstract
+  -#          %br
+  -#      .modal-footer
+  -#        %center
+  -#          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+  -#            OK! let's bark now
+  -#            %i.icon-smile
+  -#- @talk.presenters.each do |presenter|
+  -#  .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => "myModal#{presenter.id}"}
+  -#    .modal-dialog
+  -#      .modal-content
+  -#        .modal-header
+  -#          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+  -#          %h4#myModalLabel.modal-title
+  -#            = "More About #{presenter.name}"
+  -#        .modal-body
+  -#          %center
+  -#            = image_tag(gravatar(presenter.email, 100), :class => 'img-circle')
+  -#            %h3.media-heading
+  -#              = presenter.name
+  -#              %small
+  -#                %i.icon-twitter= "(#{presenter.twitter_handle})"
+  -#            - if presenter.company.present?
+  -#              %span
+  -#                %strong= "#{presenter.position} @ #{presenter.company}"
+  -#          %hr
+  -#            %center
+  -#              %p.text-left
+  -#                %strong Bio:
+  -#                %br
+  -#                  = presenter.bio
+  -#              %br
+  -#        .modal-footer
+  -#          %center
+  -#            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "I've heard enough about #{presenter.name}"
 
 - else
   .well
