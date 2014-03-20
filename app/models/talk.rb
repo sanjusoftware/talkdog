@@ -47,8 +47,8 @@ class Talk < ActiveRecord::Base
    ( Time.zone.now > start_at) && (Time.zone.now < end_at)
   end
 
-  def negative_votes
-    ratings.where('value > ? && value < ?', -5, 0).count
+  def positive_votes
+    ratings.where('value < ? && value > ?', 5, 0).count
   end
 
 end
