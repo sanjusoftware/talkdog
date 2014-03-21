@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321175118) do
+ActiveRecord::Schema.define(version: 20140321193318) do
 
   create_table "admin_users", force: true do |t|
     t.string   "username",                            null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140321175118) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "slot"
+    t.integer  "interval"
   end
 
   create_table "talks", force: true do |t|
@@ -76,6 +76,10 @@ ActiveRecord::Schema.define(version: 20140321175118) do
     t.integer  "attendance"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "five_tweeted"
+    t.boolean  "four_tweeted"
+    t.boolean  "three_tweeted"
+    t.boolean  "neg_five_tweeted"
   end
 
   create_table "users", force: true do |t|
