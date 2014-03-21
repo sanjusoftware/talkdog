@@ -47,7 +47,7 @@ attachRatingHandler = ->
             $("#rating_message").html "<div class='alert alert-danger'><strong>Oh snap!<strong> try submitting again</div>"
           else
             rating = response.value
-            rate_div_id = parseInt(response.interval)
+            rate_div_id = parseInt(response.slot)
             $("#rate_" + rate_div_id).removeClass().addClass("bar").addClass(rating_to_class[rating]).html rating_to_message[rating]
           false
         ), "json"

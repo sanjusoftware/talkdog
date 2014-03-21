@@ -33,7 +33,7 @@
   %br
   #rating_progress.progress.progress-striped
     - (1..Talk::SLOT).each do |slot|
-      - if r = @ratings.detect{|r| r.interval == slot}
+      - if r = @ratings.detect{|r| r.slot == slot}
         .bar{:style => 'width: 16.66%', :id => "rate_#{slot}", :class => rating_to_class[r.value.to_s]}
           = rating_to_message[r.value.to_s]
       - else

@@ -21,12 +21,26 @@ module TalksHelper
   end
 
   def talk_analysis_graph(talk)
-    ratings_group = talk.ratings_group
+    rating_groups = talk.rating_groups_by_time_slot
     LazyHighCharts::HighChart.new('column') do |f|
-      Talk::RATING_TO_MESSAGE.values.each do |value|
-        f.series(:name=> value,:data=> [1,2,3,4,5])
-      end
 
+      Talk::RATING_TO_MESSAGE.each do |rating, message|
+        ratings_for_slot = rating_groups.select{|r|r.value == rating.to_i}
+        data = []
+        Talk::SLOT.times do |slot|
+          got = false
+          ratings_for_slot.each do |r|
+            if r.slot == (slot + 1)
+              data << r.count
+              got = true
+            end
+          end
+          data << 0 unless got
+        end
+
+        f.series(:name=> message, :data => data)
+      end
+      f.legend(:enabled => false)
       f.title({ :text=> 'Talk Response'})
       f.options[:chart][:defaultSeriesType] = 'column'
       f.options[:xAxis] = {:plot_bands => 'none', :title=>{:text=> 'Time'}, :categories => talk.time_slots.map{|slot| time_slot_format slot}}

@@ -26,6 +26,10 @@ class Talk < ActiveRecord::Base
     ratings.group('value').count
   end
 
+  def rating_groups_by_time_slot
+    ratings.group('slot, value').select('count(*) as count, slot, value, created_at').order('slot asc')
+  end
+
   def time_slots
     freq = (end_at - start_at) / (SLOT * 60)
     time_slots = []

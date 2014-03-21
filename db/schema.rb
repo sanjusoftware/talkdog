@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316125849) do
+ActiveRecord::Schema.define(version: 20140321175118) do
 
   create_table "admin_users", force: true do |t|
     t.string   "username",                            null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140316125849) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "interval"
+    t.integer  "slot"
   end
 
   create_table "talks", force: true do |t|
