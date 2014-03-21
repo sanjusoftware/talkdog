@@ -20,6 +20,7 @@ class Talk < ActiveRecord::Base
 
   validates_presence_of :name, :event, :start_at, :end_at
   scope :recent, -> { where('end_at >= ?', Time.now).order('start_at')}
+  scope :archieved, -> { where('end_at <= ?', Time.now).order('end_at')}
 
   def ratings_group
     ratings.group('value').count

@@ -13,11 +13,29 @@ module TalksHelper
     ratings_group = talk.ratings_group
     LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Barks',:data=> ratings_group.values)
-      f.title({ :text=> 'Talk Overall Performance'})
+      f.title({ :text=> 'Talk Response'})
       f.options[:chart][:defaultSeriesType] = 'column'
       f.options[:xAxis] = {:plot_bands => 'none', :title=>{:text=> 'Time'}, :categories => ratings_group.keys.map{|rating| Talk::RATING_TO_MESSAGE[rating.to_s]}}
       f.options[:yAxis][:title] = {:text=> 'Barks'}
     end
+  end
+
+  def talk_analysis_graph(talk)
+    ratings_group = talk.ratings_group
+    LazyHighCharts::HighChart.new('column') do |f|
+      Talk::RATING_TO_MESSAGE.values.each do |value|
+        f.series(:name=> value,:data=> [1,2,3,4,5])
+      end
+
+      f.title({ :text=> 'Talk Response'})
+      f.options[:chart][:defaultSeriesType] = 'column'
+      f.options[:xAxis] = {:plot_bands => 'none', :title=>{:text=> 'Time'}, :categories => talk.time_slots.map{|slot| time_slot_format slot}}
+      f.options[:yAxis][:title] = {:text=> 'Barks'}
+    end
+  end
+
+  def time_slot_format(slot)
+    slot.strftime("%k:%M")
   end
 
   def rating_to_message

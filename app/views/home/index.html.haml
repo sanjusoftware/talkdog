@@ -28,7 +28,7 @@
             - if talk.ratings.present?
               %br
               .talk_chart
-                = high_chart("talk_graph_#{talk.id}", talk_graph(talk))
+                = high_chart("talk_graph_#{talk.id}", talk.ended? ? talk_analysis_graph(talk) : talk_graph(talk))
 - else
   .well
     No events to show

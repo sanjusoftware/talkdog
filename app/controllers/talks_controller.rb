@@ -4,7 +4,12 @@ class TalksController < ApplicationController
   #skip_before_filter :verify_authenticity_token, :only => :rate, :method => :post
 
   def index
-    @talks = Talk.all
+    @talks = @event.talks.recent
+  end
+
+  def archived
+    @talks = @event.talks.archieved
+    render :template => 'home/index'
   end
 
   def rate

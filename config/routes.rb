@@ -16,6 +16,10 @@ Talkdog::Application.routes.draw do
         get :rate
         post :rate
       end
+      collection do
+        get :archived
+      end
+
       resources :presenters
     end
   end

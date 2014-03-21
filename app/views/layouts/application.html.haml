@@ -37,6 +37,8 @@
           %a.brand{:href => "/"} Talkdog
           .right.container-fluid.nav-collapse.pull-right
             %ul.nav
+              %li
+                =link_to 'Archived Talks', archived_event_talks_path(@event)
           / /.nav-collapse
     .container-fluid
       .row-fluid
