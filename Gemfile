@@ -42,7 +42,6 @@ gem 'rails_admin'
 gem 'devise'
 gem 'simple_form'
 gem 'pry-rails'
-gem 'twitter'
 
 group :production do
   gem 'pg'

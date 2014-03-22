@@ -27,7 +27,7 @@ class Talk < ActiveRecord::Base
   end
 
   def rating_groups_by_time_slot
-    ratings.group('slot, value').select('count(*) as count, slot, value, created_at').order('slot asc')
+    ratings.group('slot, value').select('count(*) as count, slot, value').order('slot asc')
   end
 
   def time_slots
