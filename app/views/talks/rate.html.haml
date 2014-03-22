@@ -15,11 +15,11 @@
       - elsif @talk.yet_to_start?
         Too eager for a dog fight? Be a little patient
         %i.icon-smile
-  -#.pull-right
-  -#  - @talk.presenters.each do |presenter|
-  -#    .span3
-  -#      %center
-  -#        = image_tag(gravatar(presenter.email, 80), :class => 'img-circle')
+  .pull-right
+    - @talk.presenters.each do |presenter|
+      .span3
+        %center
+          = image_tag(gravatar(presenter.email, 80), :class => 'img-circle')
           -#= link_to image_tag(gravatar(presenter.email, 80), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
   .clearfix
 
@@ -45,38 +45,38 @@
         =time_slot_format(slot)
 %br
 %br
-.span7
-  .well
-    = @talk.abstract
-    %i.icon-smile
-.span3.pull-right
-  - @talk.presenters.each do |presenter|
-    = link_to image_tag(gravatar(presenter.email, 80), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
-    .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => "myModal#{presenter.id}"}
-      .modal-dialog
-        .modal-content
-          .modal-header
-            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
-            %h4#myModalLabel.modal-title
-              = "More About #{presenter.name}"
-          .modal-body
-            %center
-              = image_tag(gravatar(presenter.email, 100), :class => 'img-circle')
-              %h3.media-heading
-                = presenter.name
-                %small
-                  %i.icon-twitter= "(#{presenter.twitter_handle})"
-              - if presenter.company.present?
-                %span
-                  %strong= "#{presenter.position} @ #{presenter.company}"
-            %hr
-              %center
-                %p.text-left
-                  %strong Bio:
-                  %br
-                    = presenter.bio
-                %br
-          .modal-footer
-            %center
-              %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "I've heard enough about #{presenter.name}"
-
+.well
+  = @talk.abstract
+  %i.icon-smile
+-#.span7
+-#.span3.pull-right
+-#  - @talk.presenters.each do |presenter|
+-#    = link_to image_tag(gravatar(presenter.email, 80), :class => 'img-circle'), '#aboutModal', "data-toggle" => "modal", 'data-target' => "#myModal#{presenter.id}"
+-#    .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => "myModal#{presenter.id}"}
+-#      .modal-dialog
+-#        .modal-content
+-#          .modal-header
+-#            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+-#            %h4#myModalLabel.modal-title
+-#              = "More About #{presenter.name}"
+-#          .modal-body
+-#            %center
+-#              = image_tag(gravatar(presenter.email, 100), :class => 'img-circle')
+-#              %h3.media-heading
+-#                = presenter.name
+-#                %small
+-#                  %i.icon-twitter= "(#{presenter.twitter_handle})"
+-#              - if presenter.company.present?
+-#                %span
+-#                  %strong= "#{presenter.position} @ #{presenter.company}"
+-#            %hr
+-#              %center
+-#                %p.text-left
+-#                  %strong Bio:
+-#                  %br
+-#                    = presenter.bio
+-#                %br
+-#          .modal-footer
+-#            %center
+-#              %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}= "I've heard enough about #{presenter.name}"
+-#

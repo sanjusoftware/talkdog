@@ -12,7 +12,6 @@ class Rating < ActiveRecord::Base
   private
 
   def mesmerizing?
-    require 'pry'; binding.pry
     production? && !self.talk.five_tweeted? && (self.value == 5) && rating_counter(15)
   end
 
