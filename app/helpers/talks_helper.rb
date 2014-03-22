@@ -15,7 +15,7 @@ module TalksHelper
       f.series(:name=>'Barks',:data=> ratings_group.values)
       f.title({ :text=> 'Talk Response'})
       f.options[:chart][:defaultSeriesType] = 'column'
-      f.options[:xAxis] = {:plot_bands => 'none', :title=>{:text=> 'Time'}, :categories => ratings_group.keys.map{|rating| Talk::RATING_TO_MESSAGE[rating.to_s]}}
+      f.options[:xAxis] = {:plot_bands => 'none', :title=>{:text=> 'Votes'}, :categories => ratings_group.keys.map{|rating| Talk::RATING_TO_MESSAGE[rating.to_s]}}
       f.options[:yAxis][:title] = {:text=> 'Barks'}
     end
   end
