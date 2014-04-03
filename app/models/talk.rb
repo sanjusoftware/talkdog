@@ -1,7 +1,11 @@
 class Talk < ActiveRecord::Base
+  extend FriendlyId
+
   belongs_to :event
   has_and_belongs_to_many :presenters
   has_many :ratings, :dependent => :destroy
+
+  friendly_id :name, use: :slugged
 
   SLOT = 6
   RATING_TO_MESSAGE =

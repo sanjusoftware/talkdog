@@ -84,7 +84,7 @@ class TalksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:event_id])
+      @event = Event.friendly.find(params[:event_id])
     end
 
     def get_slot
@@ -94,7 +94,7 @@ class TalksController < ApplicationController
     end
 
   def set_talk
-      @talk = @event.talks.find(params[:id])
+      @talk = @event.talks.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

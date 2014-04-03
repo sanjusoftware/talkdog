@@ -22,8 +22,8 @@ class RatingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rating
-      @event = Event.find(params[:event_id])
-      @talk = @event.talks.find(params[:talk_id])
+      @event = Event.friendly.find(params[:event_id])
+      @talk = @event.talks.friendly.find(params[:talk_id])
       @rating = Rating.find(params[:id])
     end
 

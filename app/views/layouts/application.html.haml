@@ -38,7 +38,10 @@
           .right.container-fluid.nav-collapse.pull-right
             %ul.nav
               %li
-                =link_to 'Archived Talks', archived_events_path()
+                - if @event
+                  = link_to "#{@event.name} Archived Talks", archived_event_talks_path(@event)
+                - else
+                  =link_to 'Archived Events', archived_events_path()
           / /.nav-collapse
     .container-fluid
       .row-fluid
