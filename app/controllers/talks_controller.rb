@@ -9,7 +9,7 @@ class TalksController < ApplicationController
 
   def archived
     @talks = @event.talks.archieved
-    render :template => 'home/index'
+    render :template => 'talks/index'
   end
 
   def rate

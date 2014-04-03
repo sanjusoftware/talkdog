@@ -21,6 +21,10 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def archived
+    @events = Event.order("end_at DESC")
+  end
+
   # POST /events
   # POST /events.json
   def create

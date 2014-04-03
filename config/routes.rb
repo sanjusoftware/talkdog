@@ -10,6 +10,11 @@ Talkdog::Application.routes.draw do
 
   resources :presenters
   resources :events do
+
+    collection do
+      get :archived
+    end
+
     resources :talks do
       resources :ratings
       member do

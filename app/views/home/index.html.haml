@@ -1,34 +1,7 @@
-- if @event
-  .page-header
-    %h1#timeline
-      = @event.name
-  %ul.timeline
-    - @talks.each_with_index do |talk, i|
-      %li{:class => ("timeline-inverted" if (i+1)%2 == 0)}
-        .timeline-badge{:class => timeline_class(talk)}
-          %i.icon-beer
-        = link_to rate_event_talk_path(talk.event, talk), :class => 'timeline_anchor' do
-          .timeline-panel
-            .timeline-heading
-              %h2.timeline-title
-                = talk.name
-              .timeline-presenter
-                - talk.presenters.each do |presenter|
-                  = image_tag(gravatar(presenter.email, 30), :class => 'img-circle')
-              - if talk.yet_to_start?
-                Starting in
-                .count_down_timer{"data-date" => "#{talk.start_at.strftime("%Y-%m-%d %H:%M:%S")}"}
-              - elsif talk.started?
-                Remaining showtime
-                .count_down_timer{"data-date" => "#{talk.end_at.strftime("%Y-%m-%d %H:%M:%S")}"}
-            %br
-            .timeline-body
-              %p
-                = truncate(talk.abstract, length: 200, omission: '... (get in to explore more)')
-            - if talk.ratings.present?
-              %br
-              .talk_chart
-                = high_chart("talk_graph_#{talk.id}", talk.ended? ? talk_analysis_graph(talk) : talk_graph(talk))
+- if @events
+  - @events.each do |event|
+    %div.well.event
+      =link_to event.name, event_talks_path(event)
 - else
   .well
     No events to show
