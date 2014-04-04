@@ -82,11 +82,6 @@ ActiveRecord::Schema.define(version: 20140403163502) do
     t.integer  "slot"
   end
 
-  add_index "ratings", ["slot"], name: "index_ratings_on_slot", using: :btree
-  add_index "ratings", ["talk_id"], name: "index_ratings_on_talk_id", using: :btree
-  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
-  add_index "ratings", ["value"], name: "index_ratings_on_value", using: :btree
-
   create_table "talks", force: true do |t|
     t.string   "name"
     t.integer  "event_id"

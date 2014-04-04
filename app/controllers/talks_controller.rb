@@ -8,7 +8,7 @@ class TalksController < ApplicationController
   end
 
   def archived
-    @talks = @event.talks.archieved
+    @talks = @event.talks.archived
     render :template => 'talks/index'
   end
 

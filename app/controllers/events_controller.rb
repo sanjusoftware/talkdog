@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
 
   def archived
-    @events = Event.order("end_at DESC")
+    @events = Event.archived
   end
 
   # POST /events

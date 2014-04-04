@@ -1,7 +1,22 @@
 - if @events
-  - @events.each do |event|
-    %div.well.event
-      =link_to event.name, event_talks_path(event)
+  .page-header
+    %h1#timeline Current Events
+  %ul.timeline
+    - @events.each_with_index do |event, i|
+      %li{:class => ("timeline-inverted" if (i+1)%2 == 0)}
+        .timeline-badge{:class => timeline_class(event)}
+          %i.icon-beer
+        = link_to event_talks_path(event), :class => 'timeline_anchor' do
+          .timeline-panel
+            .timeline-heading
+              %h2.timeline-title
+                = "#{event.name} (#{event.talks.count} talks)"
+              - if event.yet_to_start?
+                Starting in
+                .count_down_timer{"data-date" => "#{event.start_at.strftime("%Y-%m-%d %H:%M:%S")}"}
+              - elsif event.started?
+                Remaining showtime
+                .count_down_timer{"data-date" => "#{event.end_at.strftime("%Y-%m-%d %H:%M:%S")}"}
 - else
   .well
     No events to show

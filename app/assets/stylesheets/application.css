@@ -11,3 +11,19 @@
  *= require_self
  *= require_tree .
  */
+
+@media (max-width: 979px) and (min-width: 768px) {
+    .container {
+        margin-top: 0 !important;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        margin-top: 65px;
+    }
+}
+
+.navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    margin-top: 0;
+}
