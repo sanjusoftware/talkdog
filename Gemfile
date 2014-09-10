@@ -42,7 +42,7 @@ gem 'oauth'
 gem 'rails_admin'
 gem 'devise'
 gem 'simple_form'
-gem 'pry-rails'
+gem 'paperclip'
 
 group :production do
   gem 'pg'
@@ -56,7 +56,7 @@ group :test do
 end
 
 group :development do
-  gem 'pry'
+  gem 'pry-rails'
   # Adds debugging steps to Pry
   # continue, step, next
   gem 'pry-debugger'

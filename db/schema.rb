@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403163502) do
+ActiveRecord::Schema.define(version: 20140910102537) do
 
   create_table "admin_users", force: true do |t|
     t.string   "username",                            null: false
@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(version: 20140403163502) do
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
@@ -81,6 +85,66 @@ ActiveRecord::Schema.define(version: 20140403163502) do
     t.integer  "user_id"
     t.integer  "slot"
   end
+
+  add_index "ratings", ["slot"], name: "index_ratings_on_slot", using: :btree
+  add_index "ratings", ["talk_id"], name: "index_ratings_on_talk_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
+  add_index "ratings", ["value"], name: "index_ratings_on_value", using: :btree
+
+  create_table "rpush_apps", force: true do |t|
+    t.string   "name",                                null: false
+    t.string   "environment"
+    t.text     "certificate"
+    t.string   "password"
+    t.integer  "connections",             default: 1, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type",                                null: false
+    t.string   "auth_key"
+    t.string   "client_id"
+    t.string   "client_secret"
+    t.string   "access_token"
+    t.datetime "access_token_expiration"
+  end
+
+  create_table "rpush_feedback", force: true do |t|
+    t.string   "device_token", limit: 64, null: false
+    t.datetime "failed_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "app"
+  end
+
+  add_index "rpush_feedback", ["device_token"], name: "index_rpush_feedback_on_device_token", using: :btree
+
+  create_table "rpush_notifications", force: true do |t|
+    t.integer  "badge"
+    t.string   "device_token",      limit: 64
+    t.string   "sound",                              default: "default"
+    t.string   "alert"
+    t.text     "data"
+    t.integer  "expiry",                             default: 86400
+    t.boolean  "delivered",                          default: false,     null: false
+    t.datetime "delivered_at"
+    t.boolean  "failed",                             default: false,     null: false
+    t.datetime "failed_at"
+    t.integer  "error_code"
+    t.text     "error_description"
+    t.datetime "deliver_after"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "alert_is_json",                      default: false
+    t.string   "type",                                                   null: false
+    t.string   "collapse_key"
+    t.boolean  "delay_while_idle",                   default: false,     null: false
+    t.text     "registration_ids",  limit: 16777215
+    t.integer  "app_id",                                                 null: false
+    t.integer  "retries",                            default: 0
+    t.string   "uri"
+    t.datetime "fail_after"
+  end
+
+  add_index "rpush_notifications", ["app_id", "delivered", "failed", "deliver_after"], name: "index_rapns_notifications_multi", using: :btree
 
   create_table "talks", force: true do |t|
     t.string   "name"

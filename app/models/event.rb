@@ -7,6 +7,9 @@ class Event < ActiveRecord::Base
   scope :recent, -> { where('end_at >= ?', Time.now).order('start_at')}
   scope :archived, -> { where('end_at <= ?', Time.now).order('end_at')}
 
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
   friendly_id :name, use: :slugged
 
   def yet_to_start?
