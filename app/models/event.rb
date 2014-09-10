@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   scope :recent, -> { where('end_at >= ?', Time.now).order('start_at')}
   scope :archived, -> { where('end_at <= ?', Time.now).order('end_at')}
 
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/:style/missing.png"
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ":style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   friendly_id :name, use: :slugged
