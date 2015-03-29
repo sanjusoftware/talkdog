@@ -1,10 +1,9 @@
 
 source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.1.0'
+ruby '2.1.5'
 gem 'rails', '4.0.3'
 
-# Use sqlite3 as the database for Active Record
 gem 'mysql2'
 
 # Use SCSS for stylesheets
@@ -57,9 +56,9 @@ end
 
 group :development do
   gem 'pry-rails'
-  # Adds debugging steps to Pry
-  # continue, step, next
-  gem 'pry-debugger'
+  # # Adds debugging steps to Pry
+  # # continue, step, next
+  # gem 'pry-debugger'
 end
 
 
