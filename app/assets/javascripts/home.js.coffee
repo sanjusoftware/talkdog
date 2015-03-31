@@ -12,7 +12,7 @@ attachTimeHandler = ->
       Days:
         text: "Days"
         color: "#40484F"
-        show: false
+        show: true
 
       Hours:
         text: "Hours"
