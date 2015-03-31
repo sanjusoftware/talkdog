@@ -6,6 +6,7 @@ class Talk < ActiveRecord::Base
   has_many :ratings, :dependent => :destroy
 
   friendly_id :name, use: :slugged
+  before_save :generate_slug
 
   SLOT = 6
   RATING_TO_MESSAGE =
@@ -58,6 +59,11 @@ class Talk < ActiveRecord::Base
 
   def positive_votes
     ratings.where('value < ? && value > ?', 5, 0).count
+  end
+
+  private
+  def generate_slug
+    self.slug = name.gsub(' ', '-')
   end
 
 end

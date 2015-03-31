@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   friendly_id :name, use: :slugged
+  before_save :generate_slug
 
   def yet_to_start?
     Time.zone.now < start_at
@@ -22,6 +23,11 @@ class Event < ActiveRecord::Base
 
   def started?
     ( Time.zone.now > start_at) && (Time.zone.now < end_at)
+  end
+
+  private
+  def generate_slug
+    self.slug = name.gsub(' ', '-')
   end
 
 end
